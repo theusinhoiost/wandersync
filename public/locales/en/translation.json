@@ -1,0 +1,24 @@
+{
+  "sidebar": {
+    "explore": "Explore",
+    "destinations": "Destinations",
+    "routes": "Routes",
+    "favorites": "Favorites",
+    "trips": "Trips",
+    "upcoming": "Upcoming",
+    "completed": "Completed",
+    "planning": "Planning",
+    "community": "Community",
+    "friends": "Friends",
+    "groups": "Groups",
+    "journals": "Journals",
+    "guide": "Guide",
+    "tips": "Tips",
+    "tutorials": "Tutorials",
+    "news": "News",
+    "settings": "Settings",
+    "account": "Account",
+    "notifications": "Notifications",
+    "subscription": "Subscription"
+  }
+}

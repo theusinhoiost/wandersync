@@ -1,0 +1,24 @@
+{
+  "sidebar": {
+    "explore": "Explorar",
+    "destinations": "Destinos",
+    "routes": "Roteiros",
+    "favorites": "Favoritos",
+    "trips": "Viagens",
+    "upcoming": "Próximas",
+    "completed": "Concluídas",
+    "planning": "Planejamento",
+    "community": "Comunidade",
+    "friends": "Amigos",
+    "groups": "Grupos",
+    "journals": "Diários",
+    "guide": "Guia",
+    "tips": "Dicas de Viagem",
+    "tutorials": "Tutoriais",
+    "news": "Novidades",
+    "settings": "Configurações",
+    "account": "Conta",
+    "notifications": "Notificações",
+    "subscription": "Assinatura"
+  }
+}
