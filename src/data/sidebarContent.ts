@@ -1,13 +1,12 @@
-import { 
-  Map, 
-  Plane, 
-  Users, 
-  BookOpen, 
-  Settings2, 
-  Camera, 
-  CalendarCheck, 
-  Heart, 
-  Globe 
+import {
+  Map,
+  Plane,
+  Users,
+  BookOpen,
+  Camera,
+  CalendarCheck,
+  Heart,
+  Globe
 } from "lucide-react";
 
 const sideBarData = {
@@ -102,26 +101,7 @@ const sideBarData = {
         },
         {
           title: "Novidades",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Configurações",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "Conta",
-          url: "#",
-        },
-        {
-          title: "Notificações",
-          url: "#",
-        },
-        {
-          title: "Assinatura",
-          url: "#",
+          url: "/news",
         },
       ],
     },

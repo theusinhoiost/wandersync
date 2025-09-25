@@ -6,6 +6,17 @@ import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbS
 import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@radix-ui/react-separator";
 
+import { Manrope, Source_Sans_3 } from "next/font/google"
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+})
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source-sans",
+})
 
 export const metadata: Metadata = {
   title: "WanderSync",
@@ -18,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${manrope.variable} ${sourceSans.variable}`} suppressHydrationWarning>
       <body
       >
           <ThemeProvider
