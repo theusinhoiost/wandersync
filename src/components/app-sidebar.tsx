@@ -15,7 +15,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data.
+
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

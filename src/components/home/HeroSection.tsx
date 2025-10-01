@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-
 export default function HeroSection() {
   return (
     <section className="max-w-3xl text-center space-y-4">
-      <h1 className="text-5xl font-extrabold tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+      <h1 className="text-wandersync">
         WanderSync
       </h1>
       <p className="text-lg text-muted-foreground">
