@@ -15,3 +15,11 @@ O objetivo é permitir que viajantes compartilhem experiências, criem roteiros 
 - [HeroUI](https://heroui.dev/) — UI components (usando seletivamente).
 
 ---
+
+## 🚀 Bibliotecas
+
+- [Recharts](https://recharts.org/en-US) — Graphs creation.
+- [React-Toastify](https://fkhadra.github.io/react-toastify/introduction/) — Notifications System.
+- [React-step-wizard](https://www.npmjs.com/package/react-step-wizard) — Wizards.
+
+---
