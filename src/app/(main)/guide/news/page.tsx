@@ -9,7 +9,7 @@ export default function newsPage() {
     <div className=" flex flex-col gap-8">
       <div className=" flex flex-col gap-2" >
         <h1 className="text-3xl font-bold text-center">Novidades do <span className="text-wandersync">WanderSync</span> </h1>
-        <p className="text-lg mt-2 text-center">
+        <p className="text-lg mt-2 text-center text-muted-foreground">
           Fique por dentro das novidades, eventos e dicas para planejar suas
           aventuras e conectar-se com outros nômades pelo caminho!
         </p>

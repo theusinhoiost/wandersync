@@ -12,10 +12,10 @@ export default function HeroSection() {
       </p>
       <div className="flex gap-4 justify-center">
         <Button asChild size="lg">
-          <Link href="/explorar">Explorar destinos</Link>
+          <Link href="/explore/destination">Explorar destinos</Link>
         </Button>
         <Button asChild size="lg" variant="outline">
-          <Link href="/criar">Criar viagem</Link>
+          <Link href="/trips/plantrip">Criar viagem</Link>
         </Button>
       </div>
     </section>

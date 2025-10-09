@@ -18,7 +18,14 @@ const labels: Record<string, string> = {
   dashboard: "Painel",
   users: "Usuários",
   settings: "Configurações",
-  news:"Novidades"
+  news:"Novidades",
+  guide:"Guia",
+  tripTips: "Dicas de viagem",
+  trips:"Viagens",
+  plantrip:"Planejamento",
+  explore:"Explorar",
+  destination:"Destinos de viagem"
+
 };
 
 export function AutoBreadcrumb() {

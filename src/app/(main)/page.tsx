@@ -1,9 +1,9 @@
 "use client";
 
+
 import FeaturesSection from "@/components/home/FeaturesSection";
 import Footer from "@/components/home/Footer";
 import HeroSection from "@/components/home/HeroSection";
-
 
 export default function Home() {
   return (

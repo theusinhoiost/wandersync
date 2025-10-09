@@ -92,7 +92,7 @@ const sideBarData = {
       items: [
         {
           title: "Dicas de Viagem",
-          url: "#",
+          url: "/guide/tripTips",
         },
         {
           title: "Tutoriais",
@@ -100,7 +100,7 @@ const sideBarData = {
         },
         {
           title: "Novidades",
-          url: "/news",
+          url: "/guide/news",
         },
       ],
     },

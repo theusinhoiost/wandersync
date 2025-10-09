@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: "WanderSync",
   description: "A trip collaborative app ",
   icons: {
-    icon: "../../../public/imgs/favicon.ico",
+    icon: "/imgs/favicon.ico",
   },
 };
 
@@ -60,7 +60,7 @@ export default function RootLayout({
                 </div>
                  <AutoBreadcrumb/> 
               </header>
-              <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+              <div className="flex flex-1 flex-col gap-4 p-4 pt-0 max-h-screen">
                 {children}
                 
               </div>
