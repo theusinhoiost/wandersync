@@ -13,6 +13,8 @@ const sideBarData = {
   user: {
     name: "Matheus",
     avatar: "/avatars/user.jpg",
+    email: "example@gmail.com",
+    
   },
   teams: [
     {
