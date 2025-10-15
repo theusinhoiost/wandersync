@@ -1,4 +1,6 @@
-import CardTripTips from "@/components/triptips/Podium/CardTripTipsPodium";
+import CardTripTips from "@/components/Triptips/Podium/CardTripTipsPodium";
+
+
 
 export default function DestinosPage() {
   return (
@@ -13,10 +15,10 @@ export default function DestinosPage() {
         locais estão no <span className="font-semibold">Top 3</span> do momento!
       </p>
 
-      {/* Top 3 Destinos */}
-      <section className="flex flex-row gap-4 flex-auto justify-center flex-wrap mb-10">
-        <CardTripTips />
-      </section>
+        <section className="flex flex-row gap-4 flex-auto justify-center flex-wrap mb-10">
+          <CardTripTips />
+        </section>
+
     </div>
   );
 }

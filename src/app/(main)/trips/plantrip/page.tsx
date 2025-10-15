@@ -1,23 +1,33 @@
 "use client";
 
+import SpendsByCategory from "@/components/Graphs/SpendsByCategory/SpendsByCategory";
+import SpendsDay from "@/components/Graphs/SpendsByDay/SpendsDay";
+import SpendsByMember from "@/components/Graphs/SpendsByMember/SpendsByMember";
+import StepWizardComplete from "@/components/TripStepCreation/StepWizardComplete";
+import { Spinner } from "@/components/ui/spinner";
+import { Suspense } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
-import SpendsDay from "@/components/graphs/SpendsByDay/SpendsDay";
-import SpendsByCategory from "@/components/graphs/SpendsByCategory/SpendsByCategory";
-import SpendsByMember from "@/components/graphs/SpendsByMember/SpendsByMember";
+
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 export default function planTrip() {
   return (
-    <div>
+    <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-center color-primary">
           Nessa página você vai poder criar a viagem do seu jeito e verificar
           as em andamento.
         </h1>
+      </div>
+      <div className="h-full sm:w-full md:max-w-[35%] md:mx-auto">
+        <Suspense fallback={<Spinner/>}>
+    <StepWizardComplete/>
+        </Suspense>
+          
       </div>
       <div>
         <ResponsiveGridLayout
