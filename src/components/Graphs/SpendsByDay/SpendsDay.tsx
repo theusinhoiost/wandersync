@@ -5,6 +5,7 @@ import {
   Tooltip,
   Line,
   LineChart,
+  ResponsiveContainer,
 } from "recharts";
 import CardGraphsStructure from "../CardGraphsStructure/CardGraphsStructure";
 
@@ -16,15 +17,23 @@ const lineData = [
   { day: "Dia 5", gastos: 400 },
   { day: "Dia 6", gastos: 700 },
 ];
+
 export default function SpendsByDay() {
   return (
-    <CardGraphsStructure title="Gastos por dia ">
-      <LineChart width={300} height={200} data={lineData}>
-        <CartesianGrid strokeDasharray="6 3" /> 
-        <XAxis dataKey="day" />   
-        <Tooltip  />
-        <Line type="natural" dataKey="gastos" stroke="#3b82f6" />
-      </LineChart>
-    </CardGraphsStructure>
+
+      <CardGraphsStructure title="Gastos por dia">
+        <ResponsiveContainer width="100%" height="100%" key={Math.random()}>
+          <LineChart
+            data={lineData}
+            margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
+          >
+            <CartesianGrid strokeDasharray="6 3" />
+            <XAxis dataKey="day" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="gastos" stroke="#3b82f6" />
+          </LineChart>
+        </ResponsiveContainer>
+      </CardGraphsStructure>
   );
 }

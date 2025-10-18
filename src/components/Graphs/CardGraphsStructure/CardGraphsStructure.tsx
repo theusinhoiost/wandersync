@@ -19,11 +19,12 @@ import { EllipsisVertical } from "lucide-react";
 
 type CardGraphsStructureProps = {
   children: React.ReactNode;
-  title:string;
+  title: string;
 };
 
 export default function CardGraphsStructure({
-  children,title
+  children,
+  title,
 }: CardGraphsStructureProps) {
   return (
     <Card className="h-full w-full flex flex-col">
@@ -49,8 +50,8 @@ export default function CardGraphsStructure({
           </DropdownMenu>
         </CardAction>
       </CardHeader>
-      <CardContent className="flex-1 flex items-center justify-center">
-        {children}
+      <CardContent className="flex-1 flex items-center justify-center overflow-hidden">
+        <div className="h-full w-full overflow-hidden">{children}</div>
       </CardContent>
     </Card>
   );

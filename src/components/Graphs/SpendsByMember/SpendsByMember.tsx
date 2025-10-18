@@ -6,6 +6,7 @@ import {
   BarChart,
   Bar,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import CardGraphsStructure from "../CardGraphsStructure/CardGraphsStructure";
 
@@ -17,15 +18,21 @@ const barData = [
 
 export default function SpendsByMember() {
   return (
-    <CardGraphsStructure title="Gastos por membro">
-      <BarChart width={300} height={200} data={barData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="valor" fill="#8b5cf6" />
-      </BarChart>
-    </CardGraphsStructure>
+      <CardGraphsStructure title="Gastos por membro">
+        <ResponsiveContainer width="100%" height="100%" key={Math.random()}>
+          <BarChart
+            data={barData}
+            margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="valor" fill="#8b5cf6" />
+          </BarChart>
+        </ResponsiveContainer>
+      </CardGraphsStructure>
+ 
   );
 }
