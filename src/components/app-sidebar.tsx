@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { sideBarData as data } from "@/data/sidebarContent"
+import { sideBarData as data } from "@/components/sidebarContent"
 
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"

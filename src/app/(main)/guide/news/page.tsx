@@ -1,7 +1,7 @@
 
 
 import CardNews from "@/components/News/CardNews";
-import { newsMocks } from "@/data/newsMocks";
+import { newsMocks } from "@/db/seed/news/news";
 export default function newsPage() {
   return (
 
