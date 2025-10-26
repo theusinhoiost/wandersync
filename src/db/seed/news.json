@@ -1,0 +1,38 @@
+{"news":[
+  {
+    "id": "post-1",
+    "slug": "wanderlust-explorando-o-norte",
+    "title": "Wanderlust: Explorando o Norte",
+    "author": "Matheus Iost",
+    "excerpt": "Uma jornada pelas rotas menos conhecidas do norte do Brasil, onde natureza e cultura se encontram.",
+    "content": "Nesta viagem, desbravamos trilhas amazônicas, conhecemos comunidades locais e vivenciamos a diversidade do norte. O WanderSync foi essencial para sincronizar nossos percursos e manter o grupo conectado em tempo real.",
+    "cover_image_url": "https://example.com/images/post-norte.jpg",
+    "published": true,
+    "created_at": "2025-09-10",
+    "updated_at": "2025-09-12"
+  },
+  {
+    "id": "post-2",
+    "slug": "dicas-de-vanlife-pelo-sul",
+    "title": "Dicas de Vanlife pelo Sul do Brasil",
+    "author": "Ana Souza",
+    "excerpt": "Como viajar de van com conforto e segurança pelas serras e praias do sul.",
+    "content": "Descubra as melhores paradas, onde dormir e como planejar rotas usando o WanderSync para economizar combustível e tempo.",
+    "cover_image_url": "https://example.com/images/post-vanlife-sul.jpg",
+    "published": true,
+    "created_at": "2025-09-15",
+    "updated_at": "2025-09-18"
+  },
+  {
+    "id": "post-3",
+    "slug": "fotografia-em-viagens-colaborativas",
+    "title": "Fotografia em Viagens Colaborativas",
+    "author": "Lucas Almeida",
+    "excerpt": "Aprenda a capturar momentos únicos em viagens compartilhadas.",
+    "content": "Neste artigo, mostramos como criar álbuns colaborativos no WanderSync, permitindo que cada membro da viagem contribua com suas melhores fotos.",
+    "cover_image_url": "https://example.com/images/post-fotografia.jpg",
+    "published": false,
+    "created_at": "2025-09-20",
+    "updated_at": "2025-09-20"
+  }
+]}

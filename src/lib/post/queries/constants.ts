@@ -1,0 +1,1 @@
+export const time_Value = 100;

@@ -1,13 +1,14 @@
 import { JsonPostRepository } from "@/repositories/post/json.repository"
 import { drizzleDb } from ".";
-import { postsTable } from "./schemas";
+import { newsTable } from "./schemas";
+
 
 (async()=>{
 const jsonPostRepository = new JsonPostRepository();
-const posts = await jsonPostRepository.findAll();
+const news = await jsonPostRepository.findAll();
 try {
     //await drizzleDb.delete(postsTable);
- await drizzleDb.insert(postsTable).values(posts);   
+ await drizzleDb.insert(newsTable).values(news);   
 } catch (error) {
     console.log(error)
 }

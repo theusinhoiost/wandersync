@@ -11,6 +11,7 @@ import { Separator } from "@radix-ui/react-separator";
 
 import { Manrope, Source_Sans_3 } from "next/font/google";
 import { AutoBreadcrumb } from "@/components/auto-breadcrumb";
+import Toastify from "@/components/Toastify";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -62,10 +63,10 @@ export default function RootLayout({
               </header>
               <div className="flex flex-1 flex-col gap-4 p-4 pt-0 max-h-screen">
                 {children}
-                
               </div>
             </SidebarInset>
           </SidebarProvider>
+          <Toastify/>
         </ThemeProvider>
       </body>
     </html>
