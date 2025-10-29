@@ -8,6 +8,7 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
 export default function planTrip() {
+  const cardsOn = false;
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -21,9 +22,11 @@ export default function planTrip() {
           <StepWizardComplete />
         </Suspense>
       </div>
-      <Suspense fallback={<Spinner />}>
-        <GraphsWithGrids />
-      </Suspense>
+      {cardsOn && (
+        <Suspense fallback={<Spinner />}>
+          <GraphsWithGrids />
+        </Suspense>
+      )}
     </div>
   );
 }

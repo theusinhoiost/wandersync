@@ -1,6 +1,11 @@
-  import { Bounce, ToastContainer } from 'react-toastify';
+"use client";
+
+import { useTheme } from "next-themes";
+import { Bounce, ToastContainer } from "react-toastify";
 
 export default function Toastify() {
+  const { theme, systemTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <ToastContainer
       position="top-right"
@@ -9,10 +14,9 @@ export default function Toastify() {
       newestOnTop={false}
       closeOnClick={false}
       rtl={false}
-      pauseOnFocusLoss
       draggable
       pauseOnHover
-      theme="light"
+      theme={currentTheme === "dark" ? "dark" : "light"}
       transition={Bounce}
     />
   );

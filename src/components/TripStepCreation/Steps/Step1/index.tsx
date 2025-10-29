@@ -38,7 +38,7 @@ export default function Step1({ nextStep }: Step1Props) {
         <h1>Vamos começar o planejamento 🛫</h1>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div>
+        <div className="gap-3 flex flex-col">
           <Label>Nome do Planejamento</Label>
           <Input
             placeholder="Ex: Viagem para Europa 2025"
@@ -47,7 +47,7 @@ export default function Step1({ nextStep }: Step1Props) {
           />
         </div>
 
-        <div>
+        <div className="gap-3 flex flex-col">
           <Label>Quantas pessoas?</Label>
           <Input
             type="number"

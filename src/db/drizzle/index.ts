@@ -11,6 +11,6 @@ export const drizzleDb = drizzle(sqliteDatabase,
         schema: {
             news: newsTable,
         },
-        logger: false
+        logger: true
     }
 )

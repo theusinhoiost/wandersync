@@ -1,10 +1,11 @@
-// import { drizzleDb } from '.';
-// import { NewsTable } from './schemas';
+import { drizzleDb } from '.';
+import { newsTable } from './schemas';
 
-// (async () => {
-//   const posts = await drizzleDb.select().from(NewsTable);
 
-//   posts.forEach(post => {
-//     console.log(post.slug);
-//   });
-// })();
+(async () => {
+    const news = await drizzleDb.select().from(newsTable);
+
+    news.forEach(news => {
+        console.log(news.slug);
+    });
+})();

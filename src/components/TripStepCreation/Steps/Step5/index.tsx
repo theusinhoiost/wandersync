@@ -15,12 +15,18 @@ export default function Step4({ nextStep, previousStep }: Step4Props) {
 
   const [style, setStyle] = useState<string>(state.tripStyle ?? "");
   const [budget, setBudget] = useState<string>(
-    state.budget === "" || state.budget === undefined ? "" : String(state.budget)
+    state.budget === "" || state.budget === undefined
+      ? ""
+      : String(state.budget)
   );
 
   useEffect(() => {
     setStyle(state.tripStyle ?? "");
-    setBudget(state.budget === "" || state.budget === undefined ? "" : String(state.budget));
+    setBudget(
+      state.budget === "" || state.budget === undefined
+        ? ""
+        : String(state.budget)
+    );
   }, [state.tripStyle, state.budget]);
 
   const handleNext = () => {
@@ -35,7 +41,7 @@ export default function Step4({ nextStep, previousStep }: Step4Props) {
         <h2>Estilo / Orçamento 💰</h2>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div>
+        <div className="gap-3 flex flex-col">
           <Label>Estilo da viagem</Label>
           <select
             value={style}
@@ -51,7 +57,7 @@ export default function Step4({ nextStep, previousStep }: Step4Props) {
           </select>
         </div>
 
-        <div>
+        <div className="gap-3 flex flex-col">
           <Label>Orçamento estimado (opcional)</Label>
           <Input
             type="number"

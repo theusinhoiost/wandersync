@@ -32,7 +32,7 @@ export default function Step3({ nextStep, previousStep }: Step3Props) {
         <h2>Datas da viagem 📅</h2>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div>
+        <div className="gap-3 flex flex-col">
           <Label>Data de ida</Label>
           <input
             type="date"
@@ -41,7 +41,7 @@ export default function Step3({ nextStep, previousStep }: Step3Props) {
             className="w-full p-2 rounded border"
           />
         </div>
-        <div>
+        <div className="gap-3 flex flex-col">
           <Label>Data de volta</Label>
           <input
             type="date"

@@ -1,15 +1,15 @@
-import { JsonPostRepository } from "@/repositories/post/json.repository"
+
+import { JsonNewsRepository } from "@/repositories/news/json.repository";
 import { drizzleDb } from ".";
 import { newsTable } from "./schemas";
 
-
-(async()=>{
-const jsonPostRepository = new JsonPostRepository();
-const news = await jsonPostRepository.findAll();
-try {
-    //await drizzleDb.delete(postsTable);
- await drizzleDb.insert(newsTable).values(news);   
-} catch (error) {
-    console.log(error)
-}
+(async () => {
+    const jsonNewsRepository = new JsonNewsRepository();
+    const news = await jsonNewsRepository.findAll();
+    try {
+        await drizzleDb.delete(newsTable);
+        await drizzleDb.insert(newsTable).values(news);
+    } catch (error) {
+        console.log(error)
+    }
 })()

@@ -28,7 +28,7 @@ export default function Step2({ nextStep, previousStep }: Step2Props) {
         <h2>Destino da viagem 🌍</h2>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div>
+        <div className="gap-3 flex flex-col">
           <Label>Destino</Label>
           <Input
             placeholder="Ex: Paris, Nordeste, Chile..."

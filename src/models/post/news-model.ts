@@ -1,11 +1,12 @@
 export type NewsModel = {
-      "id": string,
-      "title":string,
-      "slug": string,
-      "content": string,
-      "coverImageUrl": string,
-      "published":boolean,
-      "createdAt": string,
-      "updatedAt": string,
-      "author": string,
-    }
+  "id": string,
+  "title": string,
+  "slug": string,
+  "author": string,
+  "content": string,
+  "excerpt": string,
+  "coverImageUrl": string,
+  "published": boolean,
+  "created_at": string,
+  "updated_at": string,
+}
