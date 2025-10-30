@@ -1,33 +1,20 @@
 import { Responsive, WidthProvider } from "react-grid-layout";
 import SpendsByCategory from "../SpendsByCategory/SpendsByCategory";
+
+import { useId } from "react";
 import SpendsByDay from "../SpendsByDay/SpendsDay";
+import SpendsByMember from "../SpendsByMember/SpendsByMember";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 export default function GraphsWithGrids() {
+  const id = useId(); // FIX LATER - JUST TEST
   const charts = [
-    <SpendsByCategory key={2324} />,
-    <SpendsByCategory key={23244} />,
-     <SpendsByCategory key={2324}/>,
-    <SpendsByCategory key={23244}/>,
-    <SpendsByCategory key={23244}/>,
-    <SpendsByCategory key={23244} />,
-    <SpendsByCategory key={2324} />,
-    <SpendsByCategory key={23244} />,
-    <SpendsByCategory key={23244} />,
-    <SpendsByCategory key={2324} />,
-    <SpendsByDay key={213214} />,
-    <SpendsByCategory key={23244} />,
-    <SpendsByCategory key={23244} />,
-    <SpendsByCategory key={2324} />,
-    <SpendsByCategory key={23244} />,
-    <SpendsByCategory key={23244} />,
-     <SpendsByCategory key={2324}/>,
-    <SpendsByCategory key={23244}/>,
-    <SpendsByCategory key={23244}/>,
-    <SpendsByCategory key={2324} />,
-    <SpendsByCategory key={23244} />,
-    <SpendsByCategory key={23244} />,
+    <SpendsByCategory key={id} />,
+    <SpendsByCategory key={id} />,
+    <SpendsByCategory key={id} />,
+    <SpendsByDay key={id} />,
+    <SpendsByMember key={id} />,
   ];
 
   return (

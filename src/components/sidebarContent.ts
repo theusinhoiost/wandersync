@@ -14,7 +14,7 @@ const sideBarData = {
     name: "Matheus",
     avatar: "/avatars/user.jpg",
     email: "example@gmail.com",
-    
+
   },
   teams: [
     {
@@ -37,7 +37,7 @@ const sideBarData = {
       items: [
         {
           title: "Destinos",
-          url: "#",
+          url: "/explore/destination",
         },
         {
           title: "Roteiros",
@@ -64,7 +64,7 @@ const sideBarData = {
         },
         {
           title: "Planejamento",
-          url: "#",
+          url: "/trips/plantrip",
         },
       ],
     },

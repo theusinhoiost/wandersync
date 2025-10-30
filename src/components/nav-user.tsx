@@ -26,6 +26,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 export function NavUser({
   user,
@@ -98,8 +99,12 @@ export function NavUser({
                 Notifications
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Settings/>
-                Settings
+                <Link href={"/settings"}>
+                  <div className=" flex gap-2">
+                    <Settings />
+                    Settings
+                  </div>
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

@@ -9,6 +9,16 @@ import {
 } from "recharts";
 import CardGraphsStructure from "../CardGraphsStructure/CardGraphsStructure";
 
+interface LineData {
+  date: string;
+  value: number;
+}
+
+type LineProps = {
+  title: string;
+  data: LineData[];
+};
+
 const lineData = [
   { day: "Dia 1", gastos: 200 },
   { day: "Dia 2", gastos: 300 },
@@ -20,20 +30,19 @@ const lineData = [
 
 export default function SpendsByDay() {
   return (
-
-      <CardGraphsStructure title="Gastos por dia">
-        <ResponsiveContainer width="100%" height="100%" key={Math.random()}>
-          <LineChart
-            data={lineData}
-            margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
-          >
-            <CartesianGrid strokeDasharray="6 3" />
-            <XAxis dataKey="day" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="gastos" stroke="#3b82f6" />
-          </LineChart>
-        </ResponsiveContainer>
-      </CardGraphsStructure>
+    <CardGraphsStructure title="Gastos por dia">
+      <ResponsiveContainer width="100%" height="100%" key={Math.random()}>
+        <LineChart
+          data={lineData}
+          margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
+        >
+          <CartesianGrid strokeDasharray="6 3" />
+          <XAxis dataKey="day" />
+          <YAxis />
+          <Tooltip />
+          <Line type="natural" dataKey="gastos" stroke="#3b82f6" />
+        </LineChart>
+      </ResponsiveContainer>
+    </CardGraphsStructure>
   );
 }
