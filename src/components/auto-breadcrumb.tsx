@@ -13,27 +13,25 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-
 const labels: Record<string, string> = {
   dashboard: "Painel",
   users: "Usuários",
   settings: "Configurações",
-  news:"Novidades",
-  guide:"Guia",
+  news: "Novidades",
+  guide: "Guia",
   tripTips: "Dicas de viagem",
-  trips:"Viagens",
-  plantrip:"Planejamento",
-  explore:"Explorar",
-  destination:"Destinos de viagem"
-
+  trips: "Viagens",
+  plantrip: "Planejamento",
+  explore: "Explorar",
+  destination: "Destinos de viagem",
+  community: "Comunidade",
+  diary: "Diário",
 };
 
 export function AutoBreadcrumb() {
   const pathname = usePathname();
 
-  const segments = pathname
-    .split("/")
-    .filter((segment) => segment.length > 0);
+  const segments = pathname.split("/").filter((segment) => segment.length > 0);
 
   return (
     <Breadcrumb>
@@ -64,7 +62,9 @@ export function AutoBreadcrumb() {
                     </Link>
                   </BreadcrumbLink>
                 ) : (
-                  <BreadcrumbPage className="capitalize">{label}</BreadcrumbPage>
+                  <BreadcrumbPage className="capitalize">
+                    {label}
+                  </BreadcrumbPage>
                 )}
               </BreadcrumbItem>
             </React.Fragment>
