@@ -1,1 +1,1 @@
-export const time_Value = 5000;
+export const time_Value = 2000;

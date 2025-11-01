@@ -8,7 +8,7 @@ import { ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
 import Image from "next/image";
 
 type CardNewsProps = {
-  id: number;
+  id: string;
   title: string;
   text: string;
   date: Date;
