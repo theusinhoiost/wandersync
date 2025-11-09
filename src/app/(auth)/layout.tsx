@@ -1,7 +1,7 @@
+// src/app/layout.tsx
+
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
-
-
 import { Manrope, Source_Sans_3 } from "next/font/google";
 
 const manrope = Manrope({
@@ -16,9 +16,9 @@ const sourceSans = Source_Sans_3({
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"

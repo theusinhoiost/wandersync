@@ -6,7 +6,8 @@ import {
   Camera,
   CalendarCheck,
   Heart,
-  Globe
+  Globe,
+  ChartLine
 } from "lucide-react";
 
 const sideBarData = {
@@ -103,6 +104,25 @@ const sideBarData = {
         {
           title: "Novidades",
           url: "/guide/news",
+        },
+      ],
+    },
+    {
+      title: "Admin",
+      url: "#",
+      icon: ChartLine,
+      items: [
+        {
+          title: "test",
+          url: "#",
+        },
+        {
+          title: "test2",
+          url: "#",
+        },
+        {
+          title: "test3",
+          url: "#",
         },
       ],
     },

@@ -1,6 +1,5 @@
 "use client";
 
-import GraphsWithGrids from "@/components/Graphs/GraphsWithGrids";
 import StepWizardComplete from "@/components/TripStepCreation/StepWizardComplete";
 import { Spinner } from "@/components/ui/spinner";
 import { Suspense } from "react";
@@ -8,7 +7,6 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
 export default function planTrip() {
-  const cardsOn = true;
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -17,16 +15,9 @@ export default function planTrip() {
           em andamento.
         </h1>
       </div>
-      <div className="h-full sm:w-full md:max-w-[35%] md:mx-auto">
-        <Suspense fallback={<Spinner />}>
-          <StepWizardComplete />
-        </Suspense>
+      <div className="w-[70%] mx-auto">
+        <StepWizardComplete />
       </div>
-      {cardsOn && (
-        <Suspense fallback={<Spinner />}>
-          <GraphsWithGrids />
-        </Suspense>
-      )}
     </div>
   );
 }

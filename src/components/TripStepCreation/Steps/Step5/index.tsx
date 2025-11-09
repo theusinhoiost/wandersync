@@ -1,78 +1,60 @@
-// src/components/Steps/Step4.tsx
+// src/components/Steps/Step5.tsx
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { StepWizardChildProps } from "react-step-wizard";
-import { useState, useEffect } from "react";
-import { useTripActions, useTripState } from "@/context/TripContext";
+import { useTripState, useTripActions } from "@/context/TripContext";
 
-type Step4Props = Partial<StepWizardChildProps>;
+type Step5Props = Partial<StepWizardChildProps>;
 
-export default function Step4({ nextStep, previousStep }: Step4Props) {
+export default function Step5({ previousStep }: Step5Props) {
   const state = useTripState();
   const actions = useTripActions();
 
-  const [style, setStyle] = useState<string>(state.tripStyle ?? "");
-  const [budget, setBudget] = useState<string>(
-    state.budget === "" || state.budget === undefined
-      ? ""
-      : String(state.budget)
-  );
-
-  useEffect(() => {
-    setStyle(state.tripStyle ?? "");
-    setBudget(
-      state.budget === "" || state.budget === undefined
-        ? ""
-        : String(state.budget)
-    );
-  }, [state.tripStyle, state.budget]);
-
-  const handleNext = () => {
-    actions.setTripStyle(style || undefined);
-    actions.setBudget(budget === "" ? "" : Number(budget));
-    if (nextStep) nextStep();
+  const handleFinish = () => {
+    // exemplo: salvar no localStorage
+    localStorage.setItem("trip_plan", JSON.stringify(state));
+    console.log("Planejamento salvo:", state);
+    // opcional: limpar contexto
+    // actions.reset();
+    alert("Planejamento salvo com sucesso!");
   };
 
   return (
     <Card>
       <CardHeader>
-        <h2>Estilo / Orçamento 💰</h2>
+        <h2>Confirmação ✅</h2>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="gap-3 flex flex-col">
-          <Label>Estilo da viagem</Label>
-          <select
-            value={style}
-            onChange={(e) => setStyle(e.target.value)}
-            className="w-full p-2 rounded border"
-          >
-            <option value="">Selecionar</option>
-            <option value="Luxo">Luxo</option>
-            <option value="Econômica">Econômica</option>
-            <option value="Aventura">Aventura</option>
-            <option value="Família">Família</option>
-            <option value="Negócios">Negócios</option>
-          </select>
+        <div>
+          <strong>Nome:</strong> {state.planName || "-"}
+        </div>
+        <div>
+          <strong>Quantidade de pessoas:</strong>{" "}
+          {String(state.peopleCount) || "-"}
         </div>
 
-        <div className="gap-3 flex flex-col">
-          <Label>Orçamento estimado (opcional)</Label>
-          <Input
-            type="number"
-            placeholder="Ex: 5000"
-            value={budget}
-            onChange={(e) => setBudget(e.target.value)}
-            min={0}
-          />
+        <div>
+          <strong>Destino:</strong> {state.destination || "-"}
+        </div>
+        <div>
+          <strong>Ida:</strong> {state.departDate || "-"}
+        </div>
+        <div>
+          <strong>Volta:</strong> {state.returnDate || "-"}
+        </div>
+        <div>
+          <strong>Estilo:</strong> {state.tripStyle || "-"}
+        </div>
+        <div>
+          <strong>Orçamento:</strong>{" "}
+          {state.budget === "" ? "-" : `R$ ${state.budget}`}
         </div>
 
         <div className="flex justify-between mt-4">
           <Button variant="outline" onClick={previousStep}>
             Voltar
           </Button>
-          <Button onClick={handleNext}>Próximo</Button>
+          <Button variant={"finish"} onClick={handleFinish}>Finalizar Planejamento</Button>
         </div>
       </CardContent>
     </Card>

@@ -1,3 +1,5 @@
+"use client";
+
 // src/components/Steps/Step1.tsx
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -20,7 +22,6 @@ export default function Step1({ nextStep }: Step1Props) {
   );
 
   useEffect(() => {
-    // keep local inputs synced if context changes
     setPlanName(state.planName);
     setPeopleCount(state.peopleCount === "" ? "" : String(state.peopleCount));
   }, [state.planName, state.peopleCount]);

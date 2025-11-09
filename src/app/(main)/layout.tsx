@@ -23,8 +23,8 @@ const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
 });
 export const metadata: Metadata = {
-  title: "WanderSync",
-  description: "A trip collaborative app ",
+  title: { default: "WanderSync", template: "%s | WanderSync" },
+  description: "A trip collaborative app",
   icons: {
     icon: "/imgs/favicon.ico",
   },
@@ -58,7 +58,7 @@ export default function RootLayout({
                     orientation="vertical"
                     className="mr-2 data-[orientation=vertical]:h-4"
                   />
-                   <AutoBreadcrumb/> 
+                  <AutoBreadcrumb />
                 </div>
               </header>
               <div className="flex flex-1 flex-col gap-4 p-4 pt-0 max-h-screen">
@@ -66,7 +66,7 @@ export default function RootLayout({
               </div>
             </SidebarInset>
           </SidebarProvider>
-          <Toastify/>
+          <Toastify />
         </ThemeProvider>
       </body>
     </html>

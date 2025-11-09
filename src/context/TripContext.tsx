@@ -7,7 +7,13 @@ export type TripState = {
   destination: string;
   departDate: string; // ISO yyyy-mm-dd
   returnDate: string; // ISO
-  tripStyle?: "Luxo" | "Econômica" | "Aventura" | "Família" | "Negócios" | string;
+  tripStyle?:
+    | "Luxo"
+    | "Econômica"
+    | "Aventura"
+    | "Família"
+    | "Negócios"
+    | string;
   budget?: number | "";
 };
 
@@ -33,7 +39,9 @@ const defaultState: TripState = {
 };
 
 const TripStateContext = createContext<TripState | undefined>(undefined);
-const TripActionsContext = createContext<TripContextActions | undefined>(undefined);
+const TripActionsContext = createContext<TripContextActions | undefined>(
+  undefined
+);
 
 export function useTripState() {
   const ctx = useContext(TripStateContext);
