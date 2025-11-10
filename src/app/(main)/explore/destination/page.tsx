@@ -1,6 +1,5 @@
+import { EmergingDestinationsCarousel } from "@/components/Triptips/EmergingDestinationsCarousel";
 import CardTripTips from "@/components/Triptips/Podium/CardTripTipsPodium";
-
-
 
 export default function DestinosPage() {
   return (
@@ -15,10 +14,10 @@ export default function DestinosPage() {
         locais estão no <span className="font-semibold">Top 3</span> do momento!
       </p>
 
-        <section className="flex flex-row gap-4 flex-auto justify-center flex-wrap mb-10">
-          <CardTripTips />
-        </section>
-
+      <section className="flex flex-row gap-4 flex-auto justify-center flex-wrap mb-10">
+        <CardTripTips />
+      </section>
+      <EmergingDestinationsCarousel />
     </div>
   );
 }

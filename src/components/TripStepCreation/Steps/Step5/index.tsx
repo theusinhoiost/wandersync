@@ -54,7 +54,9 @@ export default function Step5({ previousStep }: Step5Props) {
           <Button variant="outline" onClick={previousStep}>
             Voltar
           </Button>
-          <Button variant={"finish"} onClick={handleFinish}>Finalizar Planejamento</Button>
+          <Button variant={"finish"} onClick={handleFinish}>
+            Finalizar Planejamento
+          </Button>
         </div>
       </CardContent>
     </Card>

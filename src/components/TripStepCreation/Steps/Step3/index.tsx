@@ -28,16 +28,13 @@ export default function Step3({ nextStep, previousStep }: Step3Props) {
   };
 
   return (
-    <Card>
+    <Card className="overflow-visible">
       <CardHeader>
         <h2>Datas da viagem 📅</h2>
       </CardHeader>
-      <CardContent className="space-y-4 flex flex-col mx-auto">
-        <div>
-          <DatePicker />
-        </div>
-
-        <div className="flex justify-between mt-4">
+      <CardContent className="px-0">
+        <DatePicker />
+        <div className="flex justify-between mt-4 px-4">
           <Button variant="outline" onClick={previousStep}>
             Voltar
           </Button>

@@ -41,7 +41,7 @@ export function DatePicker() {
       selected={dateRange}
       onSelect={handleSelect}
       numberOfMonths={2}
-      className="rounded-lg border shadow-sm"
+      className="mx-auto w-full px-0 xl:max-w-[1500px]"
     />
   );
 }
