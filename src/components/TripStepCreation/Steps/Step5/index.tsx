@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { StepWizardChildProps } from "react-step-wizard";
 import { useTripState, useTripActions } from "@/context/TripContext";
+import { toast } from "react-toastify";
 
 type Step5Props = Partial<StepWizardChildProps>;
 
@@ -11,12 +12,11 @@ export default function Step5({ previousStep }: Step5Props) {
   const actions = useTripActions();
 
   const handleFinish = () => {
-    // exemplo: salvar no localStorage
     localStorage.setItem("trip_plan", JSON.stringify(state));
     console.log("Planejamento salvo:", state);
-    // opcional: limpar contexto
-    // actions.reset();
-    alert("Planejamento salvo com sucesso!");
+    actions.reset();
+    toast.dismiss();
+    toast.success("Viagem criada com sucesso");
   };
 
   return (
