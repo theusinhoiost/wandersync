@@ -1,39 +1,34 @@
 // src/components/Steps/Step3.tsx
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import { StepWizardChildProps } from "react-step-wizard";
-import { useState, useEffect } from "react";
-import { useTripActions, useTripState } from "@/context/TripContext";
-import { DatePicker } from "@/components/DatePicker";
+import { useTripState } from "@/context/TripContext";
+import { CalendarTripDate } from "@/components/DatePicker";
 
 type Step3Props = Partial<StepWizardChildProps>;
 
 export default function Step3({ nextStep, previousStep }: Step3Props) {
-  const state = useTripState();
-  const actions = useTripActions();
-
-  const [departDate, setDepartDate] = useState(state.departDate);
-  const [returnDate, setReturnDate] = useState(state.returnDate);
-
-  useEffect(() => {
-    setDepartDate(state.departDate);
-    setReturnDate(state.returnDate);
-  }, [state.departDate, state.returnDate]);
+  const { departDate, returnDate } = useTripState();
 
   const handleNext = () => {
-    actions.setDepartDate(departDate);
-    actions.setReturnDate(returnDate);
-    if (nextStep) nextStep();
+    if (!departDate || !returnDate) {
+      alert("Selecione as datas de ida e volta!");
+      return;
+    }
+    nextStep?.();
   };
 
   return (
     <Card className="overflow-visible">
       <CardHeader>
-        <h2>Datas da viagem 📅</h2>
+        <h2 className="text-xl font-semibold">Datas da viagem 📅</h2>
       </CardHeader>
-      <CardContent className="px-0">
-        <DatePicker />
+      <CardContent>
+        <div className="flex gap-12 flex-wrap justify-center max-w-full">
+          <CalendarTripDate typeCalendar="depart" />
+          <CalendarTripDate typeCalendar="back" />
+        </div>
+
         <div className="flex justify-between mt-4 px-4">
           <Button variant="outline" onClick={previousStep}>
             Voltar

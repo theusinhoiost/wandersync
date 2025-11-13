@@ -37,11 +37,18 @@ export default function Step5({ previousStep }: Step5Props) {
           <strong>Destino:</strong> {state.destination || "-"}
         </div>
         <div>
-          <strong>Ida:</strong> {state.departDate || "-"}
+          <strong>Ida:</strong>{" "}
+          {state.departDate
+            ? state.departDate.toLocaleDateString("pt-BR")
+            : "-"}
         </div>
         <div>
-          <strong>Volta:</strong> {state.returnDate || "-"}
+          <strong>Volta:</strong>{" "}
+          {state.returnDate
+            ? state.returnDate.toLocaleDateString("pt-BR")
+            : "-"}
         </div>
+
         <div>
           <strong>Estilo:</strong> {state.tripStyle || "-"}
         </div>

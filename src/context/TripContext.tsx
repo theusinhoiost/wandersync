@@ -5,8 +5,8 @@ export type TripState = {
   planName: string;
   peopleCount: number | "";
   destination: string;
-  departDate: string; // ISO yyyy-mm-dd
-  returnDate: string; // ISO
+  departDate: Date | undefined;
+  returnDate: Date | undefined;
   tripStyle?:
     | "Luxo"
     | "Econômica"
@@ -21,8 +21,8 @@ export type TripContextActions = {
   setPlanName: (v: string) => void;
   setPeopleCount: (v: number | "") => void;
   setDestination: (v: string) => void;
-  setDepartDate: (v: string) => void;
-  setReturnDate: (v: string) => void;
+  setDepartDate: (v: Date) => void;
+  setReturnDate: (v: Date) => void;
   setTripStyle: (v: TripState["tripStyle"]) => void;
   setBudget: (v: number | "") => void;
   reset: () => void;
@@ -32,8 +32,8 @@ const defaultState: TripState = {
   planName: "",
   peopleCount: "",
   destination: "",
-  departDate: "",
-  returnDate: "",
+  departDate: undefined,
+  returnDate: undefined,
   tripStyle: undefined,
   budget: "",
 };

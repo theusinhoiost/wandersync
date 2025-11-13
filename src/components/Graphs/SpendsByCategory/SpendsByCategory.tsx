@@ -39,6 +39,7 @@ export default function SpendsByCategory() {
               labelLine={false}
               outerRadius="80%"
               dataKey="value"
+              isAnimationActive
             >
               {pieData.map((entry, index) => (
                 <Cell key={index} fill={COLORS[index % COLORS.length]} />

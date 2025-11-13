@@ -1,7 +1,5 @@
 import StepWizardComplete from "@/components/TripStepCreation/StepWizardComplete";
 import { Metadata } from "next";
-import "react-grid-layout/css/styles.css";
-import "react-resizable/css/styles.css";
 
 export const metadata: Metadata = {
   title: "Planejamento",

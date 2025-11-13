@@ -15,5 +15,19 @@ export const newsTable = sqliteTable("news_table", {
     updated_at: text('updated_at').notNull(),
 });
 
+
+export const usersTable = sqliteTable("users_table", {
+    id: text('id').primaryKey(),
+    name: text('name').notNull(),
+    password: text('password').notNull(),
+    blocked: integer({ mode: 'boolean' }),
+    userAgent: text('userAgent').notNull(),
+
+
+
+});
+
 export type NewsTableSelectMode = InferSelectModel<typeof newsTable>;
 export type NewsTableInsertMode = InferInsertModel<typeof newsTable>;
+export type UsersTableSelectMode = InferSelectModel<typeof usersTable>;
+export type UsersTableInsertMode = InferInsertModel<typeof usersTable>;
