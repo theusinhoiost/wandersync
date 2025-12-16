@@ -1,4 +1,5 @@
 export type NewsModel = {
+  "userId": string;
   "id": string,
   "title": string,
   "slug": string,
