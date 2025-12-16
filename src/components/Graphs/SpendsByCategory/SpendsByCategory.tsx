@@ -1,39 +1,63 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import CardGraphsStructure from "../CardGraphsStructure/CardGraphsStructure";
+import { Spinner } from "@/components/ui/spinner";
 
 interface PieData {
   name: string;
   value: number;
 }
 
-type PieProps = {
-  title: string;
-  data: PieData[];
-};
+export default function SpendsByCategory({ tripId }: { tripId: string }) {
+  const [data, setData] = useState<PieData[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const pieData = [
-  { name: "Transporte", value: 400 },
-  { name: "Hospedagem", value: 300 },
-  { name: "Comida", value: 300 },
-  { name: "Teste", value: 500 },
-  { name: "Terno", value: 1000 },
-];
-const COLORS = [
-  "var(--chart-1)",
-  "var(--chart-2)",
-  "var(--chart-3)",
-  "var(--chart-4)",
-  "var(--chart-5)",
-];
+  const COLORS = [
+    "var(--chart-1)",
+    "var(--chart-2)",
+    "var(--chart-3)",
+    "var(--chart-4)",
+    "var(--chart-5)",
+  ];
 
-export default function SpendsByCategory() {
+  useEffect(() => {
+    async function load() {
+      try {
+        const req = await fetch(`/api/trips/${tripId}/spends/category`, {
+          cache: "no-store",
+        });
+
+        const json = await req.json();
+        setData(json);
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+      } finally {
+        setLoading(true);
+      }
+    }
+
+    load();
+  }, [tripId]);
+
+  if (loading) {
+    return (
+      <CardGraphsStructure title="Gastos por categoria">
+        <div className="w-full h-full flex items-center justify-center text-sm">
+          <Spinner className="size-10" />
+        </div>
+      </CardGraphsStructure>
+    );
+  }
+
   return (
-    <CardGraphsStructure title={"Gastos por categoria"}>
+    <CardGraphsStructure title="Gastos por categoria">
       <div className="h-full w-full">
-        <ResponsiveContainer width="100%" height="100%" key={Math.random()}>
+        <ResponsiveContainer width="100%" height="100%">
           <PieChart margin={{ top: 20, right: 20, bottom: 30, left: 10 }}>
             <Pie
-              data={pieData}
+              data={data}
               cx="50%"
               cy="50%"
               labelLine={false}
@@ -41,7 +65,7 @@ export default function SpendsByCategory() {
               dataKey="value"
               isAnimationActive
             >
-              {pieData.map((entry, index) => (
+              {data.map((entry, index) => (
                 <Cell key={index} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>

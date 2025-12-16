@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
   CartesianGrid,
   XAxis,
@@ -8,39 +11,58 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import CardGraphsStructure from "../CardGraphsStructure/CardGraphsStructure";
+import { Spinner } from "@/components/ui/spinner";
 
 interface LineData {
-  date: string;
-  value: number;
+  day: string;
+  gastos: number;
 }
 
-type LineProps = {
-  title: string;
-  data: LineData[];
-};
+export default function SpendsByDay({ tripId }: { tripId: string }) {
+  const [data, setData] = useState<LineData[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const lineData = [
-  { day: "Dia 1", gastos: 200 },
-  { day: "Dia 2", gastos: 300 },
-  { day: "Dia 3", gastos: 250 },
-  { day: "Dia 4", gastos: 400 },
-  { day: "Dia 5", gastos: 400 },
-  { day: "Dia 6", gastos: 700 },
-];
+  useEffect(() => {
+    async function load() {
+      try {
+        const req = await fetch(`/api/trips/${tripId}/spends/day`, {
+          cache: "no-store",
+        });
 
-export default function SpendsByDay() {
+        const json = await req.json();
+        setData(json);
+      } catch (err) {
+        console.error("Erro ao buscar dados diários:", err);
+      } finally {
+        setLoading(true);
+      }
+    }
+
+    load();
+  }, [tripId]);
+
+  if (loading) {
+    return (
+      <CardGraphsStructure title="Gastos por dia">
+        <div className="w-full h-full flex items-center justify-center text-sm">
+          <Spinner className="size-10" />
+        </div>
+      </CardGraphsStructure>
+    );
+  }
+
   return (
     <CardGraphsStructure title="Gastos por dia">
-      <ResponsiveContainer width="100%" height="100%" key={Math.random()}>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={lineData}
+          data={data}
           margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
         >
           <CartesianGrid strokeDasharray="6 3" />
           <XAxis dataKey="day" />
           <YAxis />
           <Tooltip />
-          <Line type="natural" dataKey="gastos" stroke="#3b82f6" />
+          <Line type="natural" dataKey="gastos" stroke="var(--chart-1)" />
         </LineChart>
       </ResponsiveContainer>
     </CardGraphsStructure>

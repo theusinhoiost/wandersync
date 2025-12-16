@@ -11,32 +11,40 @@ import { toast } from "react-toastify";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
-export default function GraphsWithGrids() {
+export default function GraphsWithGrids({ tripId }: { tripId: string }) {
   const charts = [
-    <SpendsByCategory key="cat1" />,
-    <SpendsByCategory key="cat2" />,
-    <SpendsByCategory key="cat3" />,
-    <SpendsByDay key="day" />,
-    <SpendsByMember key="member" />,
+    <SpendsByCategory tripId={tripId} key="cat1" />,
+    <SpendsByCategory tripId={tripId} key="cat2" />,
+    <SpendsByCategory tripId={tripId} key="cat3" />,
+    <SpendsByDay tripId={tripId} key="day" />,
+    <SpendsByMember tripId={tripId} key="member" />,
+    <SpendsByDay tripId={tripId} key="day" />,
+    <SpendsByDay tripId={tripId} key="day" />,
+    <SpendsByDay tripId={tripId} key="day" />,
+    <SpendsByMember tripId={tripId} key="member" />,
   ];
 
   const handleLayoutChange = () => {
     toast.dismiss();
-    toast.info("Layout atualizado 🧩", { autoClose: 1000 });
+    toast.info("Layout atualizado com sucesso ✅ ", { autoClose: 1000 });
   };
+
   return (
     <div className="w-full">
       <ResponsiveGridLayout
         className="layout"
-        cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+        cols={{ lg: 12, md: 8, sm: 6, xs: 4, xxs: 2 }}
         rowHeight={50}
         isResizable
         isDraggable
-        onDragStop={handleLayoutChange}
+        isBounded={true}
+        resizeHandles={["se", "sw"]}
+        onLayoutChange={handleLayoutChange}
       >
         {charts.map((chart, index) => {
           const col = index % 3;
           const row = Math.floor(index / 3);
+
           return (
             <div
               key={index}

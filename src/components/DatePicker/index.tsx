@@ -11,7 +11,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useTripActions, useTripState } from "@/context/TripContext";
 
 type CalendarTripDateProps = {
   typeCalendar: "depart" | "back";
@@ -19,9 +18,9 @@ type CalendarTripDateProps = {
 
 export function CalendarTripDate({ typeCalendar }: CalendarTripDateProps) {
   const [open, setOpen] = React.useState(false);
-  const { setDepartDate, setReturnDate } = useTripActions();
-  const { departDate, returnDate } = useTripState();
 
+  const [departDate, setDepartDate] = React.useState<Date | null>(null);
+  const [returnDate, setReturnDate] = React.useState<Date | null>(null);
   if (typeCalendar === "depart") {
     return (
       <div className="flex flex-col gap-3">
@@ -35,14 +34,15 @@ export function CalendarTripDate({ typeCalendar }: CalendarTripDateProps) {
               id="date"
               className="w-48 justify-between font-normal"
             >
-              {departDate ? departDate.toLocaleDateString() : "Select date"}
+              {departDate
+                ? departDate.toLocaleDateString()
+                : "Selecionar a data"}
               <ChevronDownIcon />
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto overflow-hidden p-0" align="start">
             <Calendar
               mode="single"
-              selected={departDate}
               captionLayout="dropdown"
               onSelect={(date) => {
                 if (date) {
@@ -69,14 +69,15 @@ export function CalendarTripDate({ typeCalendar }: CalendarTripDateProps) {
               id="date"
               className="w-48 justify-between font-normal"
             >
-              {returnDate ? returnDate.toLocaleDateString() : "Select date"}
+              {returnDate
+                ? returnDate.toLocaleDateString()
+                : "Selecionar a data"}
               <ChevronDownIcon />
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto overflow-hidden p-0" align="start">
             <Calendar
               mode="single"
-              selected={returnDate}
               captionLayout="dropdown"
               onSelect={(date) => {
                 if (date) {

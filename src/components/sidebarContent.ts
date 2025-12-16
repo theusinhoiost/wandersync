@@ -31,26 +31,6 @@ const sideBarData = {
   ],
   navMain: [
     {
-      title: "Explorar",
-      url: "#",
-      icon: Map,
-      isActive: true,
-      items: [
-        {
-          title: "Destinos",
-          url: "/explore/destination",
-        },
-        {
-          title: "Roteiros",
-          url: "#",
-        },
-        {
-          title: "Favoritos",
-          url: "#",
-        },
-      ],
-    },
-    {
       title: "Viagens",
       url: "#",
       icon: Plane,
@@ -84,7 +64,7 @@ const sideBarData = {
         },
         {
           title: "Diários",
-          url: "#",
+          url: "/community/diary",
         },
       ],
     },
@@ -93,6 +73,10 @@ const sideBarData = {
       url: "#",
       icon: BookOpen,
       items: [
+        {
+          title: "Destinos",
+          url: "/explore/destination",
+        },
         {
           title: "Dicas de Viagem",
           url: "/guide/tripTips",
@@ -131,17 +115,15 @@ const sideBarData = {
     {
       name: "Diário de Viagem",
       url: "#",
-      icon: Camera,
     },
     {
       name: "Planejamento de Roteiro",
       url: "#",
-      icon: CalendarCheck,
     },
     {
       name: "Sonhos de Viagem",
       url: "#",
-      icon: Heart,
+
     },
   ],
 }

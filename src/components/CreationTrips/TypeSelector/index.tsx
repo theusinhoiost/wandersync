@@ -17,7 +17,6 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { useTripActions, useTripState } from "@/context/TripContext";
 
 const tripStyles = [
   { value: "Luxo", label: "Luxo" },
@@ -29,15 +28,7 @@ const tripStyles = [
 
 export default function KindSelector() {
   const [open, setOpen] = React.useState(false);
-  const { tripStyle } = useTripState();
-  const { setTripStyle } = useTripActions();
-
-  const selected = tripStyles.find((s) => s.value === tripStyle);
-
-  const handleSelect = (currentValue: string) => {
-    setTripStyle(currentValue === tripStyle ? "" : currentValue);
-    setOpen(false);
-  };
+  const [selected, setSelected] = React.useState<string | null>(null);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -46,35 +37,35 @@ export default function KindSelector() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="justify-between"
+          className="w-full justify-between"
         >
-          {selected ? selected.label : "Selecione um tipo de viagem"}
-          <ChevronsUpDown className="opacity-50" />
+          {selected ? selected : "Tipo de viagem"}
+          <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className="p-0">
+      <PopoverContent className="p-0 w-[200px]">
         <Command>
-          <CommandInput
-            placeholder="Selecione um tipo de viagem"
-            className="h-9"
-          />
+          <CommandInput placeholder="Procurar..." className="h-9" />
           <CommandList>
-            <CommandEmpty>Nenhum tipo de viagem encontrado</CommandEmpty>
+            <CommandEmpty>Nenhum tipo encontrado.</CommandEmpty>
             <CommandGroup>
               {tripStyles.map((kind) => (
                 <CommandItem
                   key={kind.value}
                   value={kind.value}
-                  onSelect={handleSelect}
+                  onSelect={() => {
+                    setSelected(kind.label);
+                    setOpen(false);
+                  }}
                 >
-                  {kind.label}
                   <Check
                     className={cn(
-                      "ml-auto",
-                      tripStyle === kind.value ? "opacity-100" : "opacity-0"
+                      "mr-2 h-4 w-4",
+                      selected === kind.label ? "opacity-100" : "opacity-0"
                     )}
                   />
+                  {kind.label}
                 </CommandItem>
               ))}
             </CommandGroup>

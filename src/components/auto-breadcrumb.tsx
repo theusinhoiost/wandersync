@@ -19,13 +19,14 @@ const labels: Record<string, string> = {
   settings: "Configurações",
   news: "Novidades",
   guide: "Guia",
-  tripTips: "Dicas de viagem",
+  tripTips: "Dicas",
   trips: "Viagens",
   plantrip: "Planejamento",
   explore: "Explorar",
-  destination: "Destinos de viagem",
+  destination: "Destinos",
   community: "Comunidade",
   diary: "Diário",
+  tripstatics: "Estatísticas",
 };
 
 export function AutoBreadcrumb() {
@@ -36,7 +37,6 @@ export function AutoBreadcrumb() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {/* Home sempre fixo */}
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link href="/">Home</Link>

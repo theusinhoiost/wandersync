@@ -1,5 +1,10 @@
 import { EmergingDestinationsCarousel } from "@/components/Triptips/EmergingDestinationsCarousel";
 import CardTripTips from "@/components/Triptips/Podium/CardTripTipsPodium";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Destinos mais procurados",
+};
 
 export default function DestinosPage() {
   return (
