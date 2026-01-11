@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@better-upload/client": "^3.0.12",
+    "@better-upload/server": "^3.0.12",
     "@libsql/client": "^0.15.15",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-collapsible": "^1.1.12",
@@ -45,6 +47,7 @@
     "react": "^19.2.3",
     "react-day-picker": "^9.11.1",
     "react-dom": "^19.2.3",
+    "react-dropzone": "^14.3.8",
     "react-form-wizard-component": "^0.2.8",
     "react-grid-layout": "^1.5.2",
     "react-i18next": "^15.7.3",

@@ -34,7 +34,7 @@ export default function SpendsByCategory({ tripId }: { tripId: string }) {
       } catch (error) {
         console.error("Erro ao buscar categorias:", error);
       } finally {
-        setLoading(true);
+        setLoading(false);
       }
     }
 
@@ -44,8 +44,18 @@ export default function SpendsByCategory({ tripId }: { tripId: string }) {
   if (loading) {
     return (
       <CardGraphsStructure title="Gastos por categoria">
-        <div className="w-full h-full flex items-center justify-center text-sm">
+        <div className="w-full h-full flex items-center justify-center">
           <Spinner className="size-10" />
+        </div>
+      </CardGraphsStructure>
+    );
+  }
+
+  if (!loading && data.length === 0) {
+    return (
+      <CardGraphsStructure title="Gastos por categoria">
+        <div className="text-sm text-muted-foreground flex items-center justify-center h-full">
+          Nenhum gasto registrado
         </div>
       </CardGraphsStructure>
     );
@@ -53,26 +63,24 @@ export default function SpendsByCategory({ tripId }: { tripId: string }) {
 
   return (
     <CardGraphsStructure title="Gastos por categoria">
-      <div className="h-full w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart margin={{ top: 20, right: 20, bottom: 30, left: 10 }}>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              outerRadius="80%"
-              dataKey="value"
-              isAnimationActive
-            >
-              {data.map((entry, index) => (
-                <Cell key={index} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart margin={{ top: 20, right: 20, bottom: 30, left: 10 }}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            outerRadius="80%"
+            dataKey="value"
+            nameKey="name"
+            isAnimationActive
+          >
+            {data.map((_, index) => (
+              <Cell key={index} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
     </CardGraphsStructure>
   );
 }

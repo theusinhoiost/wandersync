@@ -34,7 +34,7 @@ export default function SpendsByDay({ tripId }: { tripId: string }) {
       } catch (err) {
         console.error("Erro ao buscar dados diários:", err);
       } finally {
-        setLoading(true);
+        setLoading(false);
       }
     }
 
@@ -50,6 +50,15 @@ export default function SpendsByDay({ tripId }: { tripId: string }) {
       </CardGraphsStructure>
     );
   }
+  if (!loading && data.length === 0) {
+    return (
+      <CardGraphsStructure title="Gastos por categoria">
+        <div className="text-sm text-muted-foreground flex items-center justify-center h-full">
+          Nenhum gasto registrado
+        </div>
+      </CardGraphsStructure>
+    );
+  }
 
   return (
     <CardGraphsStructure title="Gastos por dia">
@@ -59,7 +68,15 @@ export default function SpendsByDay({ tripId }: { tripId: string }) {
           margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
         >
           <CartesianGrid strokeDasharray="6 3" />
-          <XAxis dataKey="day" />
+          <XAxis
+            dataKey="day"
+            tickFormatter={(day) =>
+              new Date(day).toLocaleDateString("pt-BR", {
+                day: "2-digit",
+                month: "2-digit",
+              })
+            }
+          />
           <YAxis />
           <Tooltip />
           <Line type="natural" dataKey="gastos" stroke="var(--chart-1)" />

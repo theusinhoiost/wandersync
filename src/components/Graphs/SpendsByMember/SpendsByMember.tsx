@@ -16,20 +16,12 @@ import { Spinner } from "@/components/ui/spinner";
 
 interface BarData {
   name: string;
-  valor: number; // gasto total
+  value: number; // gasto total
 }
 
 export default function SpendsByMember({ tripId }: { tripId: string }) {
   const [data, setData] = useState<BarData[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const COLORS = [
-    "var(--chart-1)",
-    "var(--chart-2)",
-    "var(--chart-3)",
-    "var(--chart-4)",
-    "var(--chart-5)",
-  ];
 
   useEffect(() => {
     async function load() {
@@ -43,7 +35,7 @@ export default function SpendsByMember({ tripId }: { tripId: string }) {
       } catch (err) {
         console.error("Erro ao buscar gastos por membro:", err);
       } finally {
-        setLoading(true);
+        setLoading(false);
       }
     }
 
@@ -55,6 +47,16 @@ export default function SpendsByMember({ tripId }: { tripId: string }) {
       <CardGraphsStructure title="Gastos por membro">
         <div className="w-full h-full flex items-center justify-center text-sm">
           <Spinner className="size-10" />
+        </div>
+      </CardGraphsStructure>
+    );
+  }
+
+  if (!loading && data.length === 0) {
+    return (
+      <CardGraphsStructure title="Gastos por categoria">
+        <div className="text-sm text-muted-foreground flex items-center justify-center h-full">
+          Nenhum gasto registrado
         </div>
       </CardGraphsStructure>
     );

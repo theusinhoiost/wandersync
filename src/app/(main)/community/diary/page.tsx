@@ -11,7 +11,7 @@ export default function Diary() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center justify-center h-[300px]">
+      <div className="flex items-center justify-center h-75">
         <Spinner className="size-30" />
       </div>
     );
