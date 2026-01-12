@@ -21,12 +21,13 @@ const labels: Record<string, string> = {
   guide: "Guia",
   tripTips: "Dicas",
   trips: "Viagens",
-  plantrip: "Planejamento",
+  plantrip: "Planejamento de viagem",
   explore: "Explorar",
   destination: "Destinos",
   community: "Comunidade",
   diary: "Diário",
-  tripstatics: "Estatísticas",
+  tripstatics: "Estatísticas da Viagem",
+  newsuploader: "Nova notícia",
 };
 
 export function AutoBreadcrumb() {
@@ -39,7 +40,7 @@ export function AutoBreadcrumb() {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/">Home</Link>
+            <Link href="/">Início</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
 
@@ -62,9 +63,7 @@ export function AutoBreadcrumb() {
                     </Link>
                   </BreadcrumbLink>
                 ) : (
-                  <BreadcrumbPage className="capitalize">
-                    {label}
-                  </BreadcrumbPage>
+                  <BreadcrumbPage>{label}</BreadcrumbPage>
                 )}
               </BreadcrumbItem>
             </React.Fragment>

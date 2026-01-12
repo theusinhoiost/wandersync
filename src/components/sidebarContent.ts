@@ -1,13 +1,10 @@
 import {
-  Map,
   Plane,
   Users,
   BookOpen,
-  Camera,
-  CalendarCheck,
-  Heart,
   Globe,
-  ChartLine
+  ChartLine,
+  Newspaper
 } from "lucide-react";
 
 const sideBarData = {
@@ -78,10 +75,6 @@ const sideBarData = {
           url: "/explore/destination",
         },
         {
-          title: "Dicas de Viagem",
-          url: "/guide/tripTips",
-        },
-        {
           title: "Tutoriais",
           url: "#",
         },
@@ -97,16 +90,8 @@ const sideBarData = {
       icon: ChartLine,
       items: [
         {
-          title: "test",
-          url: "#",
-        },
-        {
-          title: "test2",
-          url: "#",
-        },
-        {
-          title: "test3",
-          url: "#",
+          title: "Criar notícia",
+          url: "/admin/newsuploader",
         },
       ],
     },

@@ -14,12 +14,6 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 export default function GraphsWithGrids({ tripId }: { tripId: string }) {
   const charts = [
     <SpendsByCategory tripId={tripId} key="cat1" />,
-    <SpendsByCategory tripId={tripId} key="cat2" />,
-    <SpendsByCategory tripId={tripId} key="cat3" />,
-    <SpendsByDay tripId={tripId} key="day" />,
-    <SpendsByMember tripId={tripId} key="member" />,
-    <SpendsByDay tripId={tripId} key="day" />,
-    <SpendsByDay tripId={tripId} key="day" />,
     <SpendsByDay tripId={tripId} key="day" />,
     <SpendsByMember tripId={tripId} key="member" />,
   ];
