@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3001",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
@@ -11,6 +11,7 @@
   "dependencies": {
     "@better-upload/client": "^3.0.12",
     "@better-upload/server": "^3.0.12",
+    "@hookform/resolvers": "^5.2.2",
     "@libsql/client": "^0.15.15",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-collapsible": "^1.1.12",
@@ -27,6 +28,7 @@
     "@tiptap/react": "^3.13.0",
     "@tiptap/starter-kit": "^3.13.0",
     "@uiw/react-md-editor": "^4.0.8",
+    "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.4.1",
     "class-variance-authority": "^0.7.1",
@@ -50,6 +52,7 @@
     "react-dropzone": "^14.3.8",
     "react-form-wizard-component": "^0.2.8",
     "react-grid-layout": "^1.5.2",
+    "react-hook-form": "^7.71.1",
     "react-i18next": "^15.7.3",
     "react-phone-input-2": "^2.15.1",
     "react-toastify": "^11.0.5",
@@ -57,7 +60,7 @@
     "rehype-sanitize": "^6.0.0",
     "simple-crypto-js": "^3.0.1",
     "tailwind-merge": "^3.3.1",
-    "zod": "^4.1.12"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
