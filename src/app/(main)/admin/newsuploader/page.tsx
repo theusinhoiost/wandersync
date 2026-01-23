@@ -26,7 +26,7 @@ export default function NewsUploader() {
                 name="title"
                 required
                 minLength={3}
-                className="input w-full"
+                className="input w-full rounded-lg border border-dashed"
                 placeholder="Nova funcionalidade lançada"
               />
             </label>
@@ -36,8 +36,8 @@ export default function NewsUploader() {
               <input
                 name="author"
                 required
-                className="input w-full"
-                placeholder="Matheus Iost"
+                className="input w-full rounded-lg border border-dashed"
+                placeholder="Nome"
               />
             </label>
           </div>
@@ -48,7 +48,7 @@ export default function NewsUploader() {
               name="excerpt"
               required
               rows={3}
-              className="input w-full resize-none"
+              className="input w-full resize-none rounded-lg border border-dashed"
               placeholder="Resumo curto da notícia para listagem..."
             />
           </label>
@@ -62,7 +62,7 @@ export default function NewsUploader() {
             name="content"
             required
             rows={8}
-            className="input w-full resize-none"
+            className="input w-full resize-none rounded-lg border border-dashed"
             placeholder="Conteúdo completo da notícia..."
           />
         </section>

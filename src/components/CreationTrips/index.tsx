@@ -23,7 +23,6 @@ export default function CreationTrips() {
               <span className="text-sm font-medium mb-2">Nome do plano</span>
               <input
                 name="planName"
-                required
                 minLength={2}
                 className="input w-full"
                 placeholder="Fim de semana em Paraty"
@@ -34,7 +33,6 @@ export default function CreationTrips() {
               <span className="text-sm font-medium mb-2">Destino</span>
               <input
                 name="destination"
-                required
                 minLength={2}
                 className="input w-full"
                 placeholder="Paraty, RJ"

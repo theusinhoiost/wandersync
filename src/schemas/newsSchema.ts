@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const tripSchema = z.object({
+export const newsSchema = z.object({
     planName: z.string().min(5, "Nome muito curto"),
     peopleCount: z
         .number()
@@ -35,4 +35,4 @@ export const tripSchema = z.object({
 });
 
 
-export type TripFormValues = z.infer<typeof tripSchema>;
+export type TripFormValues = z.infer<typeof newsSchema>;
