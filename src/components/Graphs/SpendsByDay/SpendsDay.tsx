@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   CartesianGrid,
   XAxis,
@@ -11,48 +10,22 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import CardGraphsStructure from "../CardGraphsStructure/CardGraphsStructure";
-import { Spinner } from "@/components/ui/spinner";
 
-interface LineData {
-  day: string;
-  gastos: number;
+// 1. Interface alinhada com o DTO do Backend
+export interface DayData {
+  date: string; // Formato YYYY-MM-DD vindo do SQL
+  total: number;
 }
 
-export default function SpendsByDay({ tripId }: { tripId: string }) {
-  const [data, setData] = useState<LineData[]>([]);
-  const [loading, setLoading] = useState(true);
+interface SpendsByDayProps {
+  data: DayData[];
+}
 
-  useEffect(() => {
-    async function load() {
-      try {
-        const req = await fetch(`/api/trips/${tripId}/spends/day`, {
-          cache: "no-store",
-        });
-
-        const json = await req.json();
-        setData(json);
-      } catch (err) {
-        console.error("Erro ao buscar dados diários:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    load();
-  }, [tripId]);
-
-  if (loading) {
+export default function SpendsByDay({ data }: SpendsByDayProps) {
+  // 2. Validação visual simples
+  if (!data || data.length === 0) {
     return (
       <CardGraphsStructure title="Gastos por dia">
-        <div className="w-full h-full flex items-center justify-center text-sm">
-          <Spinner className="size-10" />
-        </div>
-      </CardGraphsStructure>
-    );
-  }
-  if (!loading && data.length === 0) {
-    return (
-      <CardGraphsStructure title="Gastos por categoria">
         <div className="text-sm text-muted-foreground flex items-center justify-center h-full">
           Nenhum gasto registrado
         </div>
@@ -68,18 +41,38 @@ export default function SpendsByDay({ tripId }: { tripId: string }) {
           margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
         >
           <CartesianGrid strokeDasharray="6 3" />
+
+          {/* 3. Ajuste: dataKey é 'date'. O tickFormatter formata para PT-BR */}
           <XAxis
-            dataKey="day"
-            tickFormatter={(day) =>
-              new Date(day).toLocaleDateString("pt-BR", {
-                day: "2-digit",
-                month: "2-digit",
-              })
-            }
+            dataKey="date"
+            tickFormatter={(dateString) => {
+              // Converte string ISO (2025-01-20) para visual (20/01)
+              // Dica: Adicione "T00:00:00" para evitar timezone shifts se necessário,
+              // ou use split('-') para ser mais seguro contra fuso horário.
+              const [year, month, day] = dateString.split("-");
+              return `${day}/${month}`;
+            }}
           />
+
           <YAxis />
-          <Tooltip />
-          <Line type="natural" dataKey="gastos" stroke="var(--chart-1)" />
+
+          <Tooltip
+            formatter={(value: number) => `R$ ${value.toFixed(2)}`}
+            labelFormatter={(label) => {
+              // Formata também o título do tooltip
+              const [year, month, day] = label.split("-");
+              return `${day}/${month}/${year}`;
+            }}
+          />
+
+          <Line
+            type="natural"
+            dataKey="total"
+            name="Gasto Diário"
+            stroke="var(--chart-1)"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+          />
         </LineChart>
       </ResponsiveContainer>
     </CardGraphsStructure>

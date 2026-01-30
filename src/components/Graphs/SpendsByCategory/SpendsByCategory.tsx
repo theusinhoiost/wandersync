@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import CardGraphsStructure from "../CardGraphsStructure/CardGraphsStructure";
-import { Spinner } from "@/components/ui/spinner";
 
-interface PieData {
-  name: string;
-  value: number;
+// 1. Defina a interface igual ao que vem do Backend DTO
+export interface CategoryData {
+  categoryName: string;
+  total: number;
+  color?: string;
 }
 
-export default function SpendsByCategory({ tripId }: { tripId: string }) {
-  const [data, setData] = useState<PieData[]>([]);
-  const [loading, setLoading] = useState(true);
+interface SpendsByCategoryProps {
+  data: CategoryData[];
+}
 
+export default function SpendsByCategory({ data }: SpendsByCategoryProps) {
+  // Cores de fallback
   const COLORS = [
     "var(--chart-1)",
     "var(--chart-2)",
@@ -22,36 +24,9 @@ export default function SpendsByCategory({ tripId }: { tripId: string }) {
     "var(--chart-5)",
   ];
 
-  useEffect(() => {
-    async function load() {
-      try {
-        const req = await fetch(`/api/trips/${tripId}/spends/category`, {
-          cache: "no-store",
-        });
+  // 3. Validação simples: se não tiver dados, mostra mensagem vazia
 
-        const json = await req.json();
-        setData(json);
-      } catch (error) {
-        console.error("Erro ao buscar categorias:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    load();
-  }, [tripId]);
-
-  if (loading) {
-    return (
-      <CardGraphsStructure title="Gastos por categoria">
-        <div className="w-full h-full flex items-center justify-center">
-          <Spinner className="size-10" />
-        </div>
-      </CardGraphsStructure>
-    );
-  }
-
-  if (!loading && data.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <CardGraphsStructure title="Gastos por categoria">
         <div className="text-sm text-muted-foreground flex items-center justify-center h-full">
@@ -70,15 +45,21 @@ export default function SpendsByCategory({ tripId }: { tripId: string }) {
             cx="50%"
             cy="50%"
             outerRadius="80%"
-            dataKey="value"
-            nameKey="name"
+            // 4. Ajuste as chaves para bater com o seu DTO
+            dataKey="total" // Antes era 'value'
+            nameKey="categoryName" // Antes era 'name'
             isAnimationActive
           >
-            {data.map((_, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} />
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                // Prioriza a cor do banco, se não tiver, usa a lista local
+                fill={entry.color || COLORS[index % COLORS.length]}
+              />
             ))}
           </Pie>
-          <Tooltip />
+          {/* O Tooltip precisa saber quais nomes exibir agora */}
+          <Tooltip formatter={(value: number) => `R$ ${value.toFixed(2)}`} />
         </PieChart>
       </ResponsiveContainer>
     </CardGraphsStructure>
