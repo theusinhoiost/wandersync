@@ -10,7 +10,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Loader2 } from "lucide-react";
-import Cookies from "js-cookie";
 
 export function LoginForm({
   className,
@@ -23,44 +22,42 @@ export function LoginForm({
     password: "",
   });
 
+  type LoginSuccessResponse = { message: string };
+  type LoginErrorResponse = { message?: string | string[] };
+
   // Função que faz o login
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/auth/login", {
+      const res = await fetch("http://localhost:3333/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
+        credentials: "include",
       });
 
+      const data: LoginSuccessResponse | LoginErrorResponse = await res
+        .json()
+        .catch(() => ({}));
+
       if (!res.ok) {
-        // Tenta pegar a mensagem de erro do backend, se houver
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.message || "Credenciais inválidas");
+        const msg = Array.isArray(data.message)
+          ? data.message.join(", ")
+          : data.message;
+
+        throw new Error(msg || "Credenciais inválidas");
       }
 
-      const data = await res.json();
-      console.log("📦 RESPOSTA DO LOGIN:", data);
-      const token = data.access_token || data.accessToken;
-      if (token) {
-        // 1. Salva o Token CORRETO
-        Cookies.set("wandersync_token", token, {
-          // <--- Use a variável 'token' aqui
-          expires: 1,
-          path: "/",
-        });
-        toast.success("Login realizado com sucesso! ✈️");
+      const ok = data as LoginSuccessResponse;
 
-        // 2. Redireciona
-        router.push("/");
-      } else {
-        throw new Error("Token não recebido do servidor");
-      }
+      toast.success(ok.message || "Login realizado com sucesso! ✈️");
+      router.replace("/");
+      router.refresh();
     } catch (e) {
       console.error(e);
-      toast.error("Erro ao fazer login");
+      toast.error(e instanceof Error ? e.message : "Erro ao fazer login");
     } finally {
       setLoading(false);
     }

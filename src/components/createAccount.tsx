@@ -23,6 +23,7 @@ import {
 } from "@/schemas/createAccountSchema";
 import { AxiosError } from "axios";
 import { api } from "@/services/api";
+import { toast } from "react-toastify";
 
 export function CreateAccount({
   className,
@@ -46,7 +47,7 @@ export function CreateAccount({
   // Submit
   const onSubmit = async (data: CreateAccountFormData) => {
     try {
-      await api.post("/users", {
+      await api.post("http://localhost:3333/users", {
         name: data.fullName,
         email: data.email,
         phone: data.phone,
@@ -60,13 +61,13 @@ export function CreateAccount({
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error.response?.status === 409) {
-          alert("Email ou telefone já cadastrado");
+          toast.error("Número de telefone ou email já existente");
           return;
         }
 
-        alert(error.response?.data?.message ?? "Erro ao criar conta");
+        toast.error("Erro ao criar conta, por favor contatar suporte");
       } else {
-        alert("Erro inesperado");
+        toast.error("Erro ao criar conta, por favor contatar suporte");
       }
     }
   };
